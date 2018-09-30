@@ -4,6 +4,7 @@
 
 #import "Cryptography.h"
 #import "NSData+OWS.h"
+#import "OWSError.h"
 #import "SSKBaseTest.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -86,6 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
                                                       error:&error];
     XCTAssertNotNil(error);
     XCTAssertNil(decryptedData);
+    XCTAssertEqual(OWSErrorCodeFailedToDecryptMessage, error.code);
 }
 
 - (void)testDecryptAttachmentWithBadKey
@@ -105,11 +107,14 @@ NS_ASSUME_NONNULL_BEGIN
     NSData *badKey = [Cryptography generateRandomBytes:64];
 
     NSError *error;
-    XCTAssertThrows([Cryptography decryptAttachment:cipherText
-                                            withKey:badKey
-                                             digest:generatedDigest
-                                       unpaddedSize:(UInt32)plainTextData.length
-                                              error:&error]);
+    NSData *_Nullable decryptedAttachmentData = [Cryptography decryptAttachment:cipherText
+                                                                        withKey:badKey
+                                                                         digest:generatedDigest
+                                                                   unpaddedSize:(UInt32)plainTextData.length
+                                                                          error:&error];
+    XCTAssertNil(decryptedAttachmentData);
+    XCTAssertNotNil(error);
+    XCTAssertEqual(OWSErrorCodeFailedToDecryptMessage, error.code);
 }
 
 - (void)testDecryptAttachmentWithBadDigest
@@ -129,11 +134,14 @@ NS_ASSUME_NONNULL_BEGIN
     NSData *badDigest = [Cryptography generateRandomBytes:32];
 
     NSError *error;
-    XCTAssertThrows([Cryptography decryptAttachment:cipherText
-                                            withKey:generatedKey
-                                             digest:badDigest
-                                       unpaddedSize:(UInt32)plainTextData.length
-                                              error:&error]);
+    NSData *_Nullable decryptedAttachmentData = [Cryptography decryptAttachment:cipherText
+                                                                        withKey:generatedKey
+                                                                         digest:badDigest
+                                                                   unpaddedSize:(UInt32)plainTextData.length
+                                                                          error:&error];
+    XCTAssertNil(decryptedAttachmentData);
+    XCTAssertNotNil(error);
+    XCTAssertEqual(OWSErrorCodeFailedToDecryptMessage, error.code);
 }
 
 - (void)testComputeSHA256Digest

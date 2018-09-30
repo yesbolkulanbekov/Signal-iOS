@@ -461,7 +461,7 @@ const NSUInteger kAES256_KeyByteLength = 32;
                                                         matchingHMAC:hmac
                                                               digest:digest];
     if (!paddedPlainText) {
-        OWSFailDebug(@"couldn't decrypt attachment.");
+        OWSFailDebugUnlessRunningTests(@"couldn't decrypt attachment.");
         *error = OWSErrorWithCodeDescription(
             OWSErrorCodeFailedToDecryptMessage, NSLocalizedString(@"ERROR_MESSAGE_INVALID_MESSAGE", @""));
         return nil;

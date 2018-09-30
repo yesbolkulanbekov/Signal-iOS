@@ -139,6 +139,15 @@ NS_ASSUME_NONNULL_BEGIN
 // This macro is intended for use in Objective-C.
 #define OWSAssertIsOnMainThread() OWSCAssertDebug([NSThread isMainThread])
 
+#define OWSFailDebugUnlessRunningTests(_messageFormat, ...)                                                            \
+    do {                                                                                                               \
+        OWSLogError(_messageFormat, ##__VA_ARGS__);                                                                    \
+        [DDLog flushLog];                                                                                              \
+        if (!CurrentAppContext().isRunningTests) {                                                                     \
+            OWSFailWithoutLogging(_messageFormat, ##__VA_ARGS__);                                                      \
+        }                                                                                                              \
+    } while (0)
+
 #define OWSFailDebug(_messageFormat, ...)                                                                              \
     do {                                                                                                               \
         OWSLogError(_messageFormat, ##__VA_ARGS__);                                                                    \

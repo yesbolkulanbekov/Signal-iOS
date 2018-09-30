@@ -33,10 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
 
     [SSKEnvironment.shared.primaryStorage closeStorageForTests];
 
-    ClearCurrentAppContextForTests();
-    [Environment clearSharedForTests];
-    [SSKEnvironment clearSharedForTests];
-
     [super tearDown];
 }
 

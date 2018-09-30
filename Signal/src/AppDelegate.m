@@ -1018,6 +1018,11 @@ static NSTimeInterval launchStartedAt;
     // it will also run all deferred blocks.
     [AppReadiness setAppIsReady];
 
+    if (CurrentAppContext().isRunningTests) {
+        OWSLogVerbose(@"Skipping post-launch logic in tests.");
+        return;
+    }
+
     if ([TSAccountManager isRegistered]) {
         OWSLogInfo(@"localNumber: %@", [TSAccountManager localNumber]);
 

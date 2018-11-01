@@ -30,8 +30,8 @@ typedef NS_ENUM(NSInteger, TSWhisperMessageType) {
 #define textSecureCDNServerURL @"https://d3s6b86nhglrmb.cloudfront.net"
 
 // Local
-#define textSecureWebSocketAPI @"ws://192.168.1.15:8080/v1/websocket/"
-#define textSecureServerURL @"http://192.168.1.15:8080/"
+#define textSecureWebSocketAPI @"ws://192.168.1.2:8080/v1/websocket/"
+#define textSecureServerURL @"http://192.168.1.2:8080/"
 
 // Heroku
 //#define textSecureWebSocketAPI @"ws://signal-chat.herokuapp.com/v1/websocket/"

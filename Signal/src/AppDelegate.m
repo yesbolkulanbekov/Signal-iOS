@@ -1142,7 +1142,7 @@ static NSTimeInterval launchStartedAt;
         self.window.rootViewController = navigationController;
     }
 
-    [AppUpdateNag.sharedInstance showAppUpgradeNagIfNecessary];
+    //[AppUpdateNag.sharedInstance showAppUpgradeNagIfNecessary];
 }
 
 #pragma mark - status bar touches

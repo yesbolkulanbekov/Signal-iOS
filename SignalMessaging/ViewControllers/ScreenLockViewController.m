@@ -45,7 +45,7 @@ NSString *NSStringForScreenLockUIState(ScreenLockUIState value)
     [edgesView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
     [edgesView autoPinWidthToSuperview];
 
-    UIImage *image = [UIImage imageNamed:@"logoSignal"];
+    UIImage *image = [UIImage imageNamed:@"appLogoCircle"];
     UIImageView *imageView = [UIImageView new];
     imageView.image = image;
     [edgesView addSubview:imageView];

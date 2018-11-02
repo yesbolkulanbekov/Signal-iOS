@@ -475,7 +475,7 @@ NSString *const kArchivedConversationsReuseIdentifier = @"kArchivedConversations
         self.hasThemeChanged = NO;
     }
 
-    [self requestReviewIfAppropriate];
+//    [self requestReviewIfAppropriate];
 
     [self.searchResultsController viewDidAppear:animated];
 
@@ -1511,7 +1511,7 @@ NSString *const kArchivedConversationsReuseIdentifier = @"kArchivedConversations
             // In Debug this pops up *every* time, which is helpful, but annoying.
             // In Production this will pop up at most 3 times per 365 days.
 #ifndef DEBUG
-            [SKStoreReviewController requestReview];
+            //[SKStoreReviewController requestReview];
 #endif
         }
     } else {

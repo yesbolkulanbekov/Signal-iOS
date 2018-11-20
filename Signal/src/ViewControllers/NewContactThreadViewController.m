@@ -333,17 +333,17 @@ NS_ASSUME_NONNULL_BEGIN
                                                                                       animated:YES];
                                          }]];
 
-    if (self.contactsViewHelper.contactsManager.isSystemContactsAuthorized) {
-        // Invite Contacts
-        [staticSection
-            addItem:[OWSTableItem
-                        disclosureItemWithText:NSLocalizedString(@"INVITE_FRIENDS_CONTACT_TABLE_BUTTON",
-                                                   @"Label for the cell that presents the 'invite contacts' workflow.")
-                               customRowHeight:UITableViewAutomaticDimension
-                                   actionBlock:^{
-                                       [weakSelf presentInviteFlow];
-                                   }]];
-    }
+//    if (self.contactsViewHelper.contactsManager.isSystemContactsAuthorized) {
+//        // Invite Contacts
+//        [staticSection
+//            addItem:[OWSTableItem
+//                        disclosureItemWithText:NSLocalizedString(@"INVITE_FRIENDS_CONTACT_TABLE_BUTTON",
+//                                                   @"Label for the cell that presents the 'invite contacts' workflow.")
+//                               customRowHeight:UITableViewAutomaticDimension
+//                                   actionBlock:^{
+//                                       [weakSelf presentInviteFlow];
+//                                   }]];
+//    }
     [contents addSection:staticSection];
 
     BOOL hasSearchText = [self.searchBar text].length > 0;
